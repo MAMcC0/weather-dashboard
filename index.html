@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+        <header class="pb-3 pt-4">
+            <h1 class="text-center">Weather Dashboard</h1>
+        </header>
+        <div class="row flex-nowrap">
+            <aside class="col-sm-2 col-md-3">
+                <h2 class="pl-3">Search for a City</h2>
+                <input class="ml-3" type="text" name="search-weather" id="weather-search" placeholder="ex. San Diego">
+                <button class="button">Search</button>
+                <hr class="ml-3">
+            </aside>
+            <section class="container-fluid col-sm-10 col-md-9 border rounded mr-4">
+                <h3></h3>
+                <p class="date py-4"></p>
+                <p class="temp py-3">Temp:</p>
+                <p class="wind  py-3">Wind:</p>
+                <p class="humidity py-3">Humidity:</p>
+                <p class="uv-index py-3"></p>
+            </section>
+        </div>
+            <div class="row flex-nowrap">
+            <section class="col-sm-9 col-md-10">
+                <h3>Five Day Forecast</h3>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+            </section>
+        </div>
+        
+</body>
+
+</html>
