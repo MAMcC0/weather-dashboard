@@ -19,3 +19,18 @@ fetch(url)
 .then(response => response.json())
 .then(data => data.response);
 
+var lat = data.response.lat;
+var long = data.response.lon;
+
+var weatherFetchUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${long}&units=imperial&exclude=minutely,hourly&appid=d9e6c47cd1a84b43c7eae83b3f67b82b`;
+
+fetch(weatherFetchUrl)
+.then(response => response.json())
+.then(data => {
+     weatherRender(data.response)});
+
+function weatherRender(resultObj){
+
+
+
+}
