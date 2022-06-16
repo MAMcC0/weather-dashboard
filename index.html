@@ -21,13 +21,13 @@
             <hr class="ml-3">
         </aside>
         <div class="container-fluid d-flex flex-column align-items-baseline justify-content-start">
-            <div class="card w-auto mr-4 pr-5 mw-100 col-sm-10 col-md-9 border rounded">
-                <section class="container-fluid ">
+            <div class=" w-auto mr-4 pr-5 mw-100 border rounded">
+                <section class="container ">
                     <h3 id="city-name"></h3>
-                    <p class="py-4" id="data"></p>
-                    <p class="py-3" id="temp">Temp:</p>
-                    <p class="py-3" id="wind">Wind:</p>
-                    <p class="py-3" id="humidity">Humidity:</p>
+                    <p class="py-4"><span id="date"></span></p>
+                    <p class="py-3">Temp: <span id="temp"></span></p>
+                    <p class="py-3">Wind: <span id="wind"></span></p>
+                    <p class="py-3">Humidity: <span id="humidity"></span></p>
                     <p class="py-3" id="uv-index"></p>
                 </section>
             </div>
@@ -45,4 +45,6 @@
     </div>
 </body>
 
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="./assets/logic.js"></script>
 </html>

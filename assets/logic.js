@@ -11,26 +11,35 @@
 
 //add search to local storage
 // click event to call this function again
-var userInput = //grab user input from search bar
-;
-var url = `http://api.openweathermap.org/geo/1.0/direct?q=${userInput},840&limit=1&appid=d9e6c47cd1a84b43c7eae83b3f67b82b`;
+// var userInput = //grab user input from search bar
+// ;
+var url = `http://api.openweathermap.org/geo/1.0/direct?q=victorville,3166&limit=1&appid=d9e6c47cd1a84b43c7eae83b3f67b82b`;
 
 fetch(url)
-.then(response => response.json())
-.then(data => data.response);
-
-var lat = data.response.lat;
-var long = data.response.lon;
-
-var weatherFetchUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${long}&units=imperial&exclude=minutely,hourly&appid=d9e6c47cd1a84b43c7eae83b3f67b82b`;
-
-fetch(weatherFetchUrl)
-.then(response => response.json())
-.then(data => {
-     weatherRender(data.response)});
-
-function weatherRender(resultObj){
+    .then(response => response.json())
+    .then(data => {
+         weatherFetch(data)
+    });
 
 
+function weatherFetch(resultObj) {
+    
+    var lat = resultObj[0].lat;
+    
+    var long = resultObj[0].lon;
+
+    var weatherFetchUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${long}&units=imperial&exclude=minutely,hourly&appid=d9e6c47cd1a84b43c7eae83b3f67b82b`;
+
+    fetch(weatherFetchUrl)
+        .then(response => response.json())
+        .then(data => {
+      weatherRender(data)});
 
 }
+ function weatherRender(resultObj){
+    $("#city-name").text(userInput);
+
+    $("#date").text()
+
+
+ }
