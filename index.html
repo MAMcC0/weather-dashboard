@@ -16,23 +16,25 @@
     <div class="content d-flex flex-row flex-nowrap align-items-baseline justify-content-start">
         <aside>
             <h2 class="pl-3">Search for a City</h2>
-            <input class="ml-3" type="text" name="search-weather" id="weather-search" placeholder="ex. San Diego">
-            <button class="button">Search</button>
+           
+            <input class="pl-3" type="text" name="search-weather" id="weather-search" placeholder="ex. San Diego">
+            <button class="button" id="search-btn">Search</button>
+       
             <hr class="ml-3">
         </aside>
         <div class="container-fluid d-flex flex-column align-items-baseline justify-content-start">
-            <div class=" w-auto mr-4 pr-5 mw-100 border rounded">
+            
                 <section class="container ">
                     <h3 id="city-name"></h3>
                     <p class="py-4"><span id="date"></span></p>
                     <p class="py-3">Temp: <span id="temp"></span></p>
                     <p class="py-3">Wind: <span id="wind"></span></p>
                     <p class="py-3">Humidity: <span id="humidity"></span></p>
-                    <p class="py-3" id="uv-index"></p>
+                    <p class="py-3" id="uv-index"><span id="uv-show"></span></p>
                 </section>
-            </div>
-            <div class="row flex-nowrap">
-                <section class="col-sm-9 col-md-10">
+            
+           
+                <section class="">
                     <h3>Five Day Forecast</h3>
                     <div class="card"></div>
                     <div class="card"></div>
@@ -40,7 +42,7 @@
                     <div class="card"></div>
                     <div class="card"></div>
                 </section>
-            </div>
+            
         </div>
     </div>
 </body>

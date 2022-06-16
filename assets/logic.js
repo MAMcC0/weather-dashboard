@@ -1,19 +1,16 @@
-// grab form input
-//fetch request using template literals for lat and longitude
-//store lat and logitude in variables
-// send lat and log variables into second fetch request for weather
-//grab city name, date, icon of weath conditions, temperature, humidity, wind speed, UV
-//conditional statement for color of uv index of favorable moderate or servere
+function grabInput (){
+    
+   
+    var userInput = $("#weather-search").val().trim();
+    var userDisplay = $(userInput).addClass('captialize');//fix
+    $("#city-name").text(userDisplay);
 
-//grab five day forecast, 
-//grab date, icon, and temperature, wind speed, and humidity
+    console.log(userInput);
 
 
 //add search to local storage
-// click event to call this function again
-// var userInput = //grab user input from search bar
-// ;
-var url = `http://api.openweathermap.org/geo/1.0/direct?q=victorville,3166&limit=1&appid=d9e6c47cd1a84b43c7eae83b3f67b82b`;
+
+var url = `http://api.openweathermap.org/geo/1.0/direct?q=${userInput},3166&limit=1&appid=d9e6c47cd1a84b43c7eae83b3f67b82b`;
 
 fetch(url)
     .then(response => response.json())
@@ -21,7 +18,7 @@ fetch(url)
          weatherFetch(data)
     });
 
-
+};
 function weatherFetch(resultObj) {
     
     var lat = resultObj[0].lat;
@@ -33,13 +30,36 @@ function weatherFetch(resultObj) {
     fetch(weatherFetchUrl)
         .then(response => response.json())
         .then(data => {
-      weatherRender(data)});
+              weatherRender(data)});
 
 }
  function weatherRender(resultObj){
-    $("#city-name").text(userInput);
+//moment.js time function of dt objects
+    var uviShow =$("#uv-show");
+   var date = moment.utc(resultObj.current.dt).local().format();
+   
+   console.log(date);
+    $("#date").text(date)
 
-    $("#date").text()
+    $("#temp").text(resultObj.current.temp);
+
+    $('#wind').text(resultObj.current.wind_speed);
+
+    $('#humidity').text(resultObj.current.humidity);
+
+    var uvi = resultObj.current.uvi; 
+    if(uvi <= 2){
+        uviShow.attr("class", "text-bg-success");
+    } else if (uvi > 2 && uvi <= 5){
+        uviShow.attr("class", "text-bg-info");
+    } else if( uvi > 5 && uvi <= 7 ){
+        uviShow.attr("class", "text-bg-primary");
+    } else if (uvi > 7 && uvi <= 10 ){
+        uviShow.attr("class", "text-bg-warning");
+    } else {
+        uviShow.attr("class", "text-bg-danger");
+    }}
 
 
- }
+
+$("#search-btn").click(grabInput);
