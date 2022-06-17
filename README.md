@@ -14,3 +14,4 @@ Repo: https://github.com/MAMcC0/technical-questions-quiz
 Live Site: https://mamcc0.github.io/weather-dashboard/
 
 ## Image of Application
+![application](./assets/Screenshot%20(23).png)
