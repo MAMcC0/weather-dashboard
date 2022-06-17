@@ -1,5 +1,5 @@
 let userInput;
-
+var index = 0;
 
 function grabInput (){
 
@@ -35,7 +35,7 @@ function weatherFetch(resultObj) {
 
     fetch(weatherFetchUrl)
         .then(response => response.json())
-        .then(data => console.log(data);
+        .then(data => 
               {
                 weatherRender(data)}
               );
@@ -67,9 +67,26 @@ function weatherFetch(resultObj) {
         uviShow.attr("class", "text-bg-warning");
     } else {
         uviShow.attr("class", "text-bg-danger");
-    }}
+    }
+    renderCard(resultObj);
+}
 
+    function renderCard(resultObj){
+    for (let i=0; i < 5; i++)
+    {
+            var dateCard = $("<h3>").html(moment.unix(resultObj.daily[i].dt).format('MMM D'))
+            var tempCard = $("<p>Temp:").text(resultObj.daily[i].temp);
+            var windCard = $("<p>Wind:").text(resultObj.daily[i].wind_speed);
+            var humidityCard = $("<p>Humidity:").text(resultObj.daily[i].humidity);
+            $("#card-hold").append(dateCard, tempCard, windCard, humidityCard)
+            
+        
+     
+       
+      
+    } };  
     
 
 
 $("#search-btn").click(grabInput);
+
