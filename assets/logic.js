@@ -13,14 +13,8 @@ function grabInput (){
 
    localStorage.setItem("userSearch", JSON.stringify(newInput));
    
-    
-    
     $("#city-name").text(userInput);
 
-    console.log(userInput);
-
-
-//add search to local storage
 
 var url = `http://api.openweathermap.org/geo/1.0/direct?q=${userInput},3166&limit=1&appid=d9e6c47cd1a84b43c7eae83b3f67b82b`;
 
@@ -41,23 +35,25 @@ function weatherFetch(resultObj) {
 
     fetch(weatherFetchUrl)
         .then(response => response.json())
-        .then(data => {
-              weatherRender(data)});
+        .then(data => 
+             {
+               weatherRender(data)}
+              );
 
 }
  function weatherRender(resultObj){
 //moment.js time function of dt objects
                    
-    var uviShow =$("#uv-show").text(resultObj.current.uvi);
-    var date = document.getElementById("date");
-    var dataString = moment(resultObj.current.dt).format('L');
+    
+    
+    var grabTime = moment.unix(resultObj.current.dt).format('MMM D');
+    var dataString = $("#date").html(grabTime);
+    
    
-   console.log(dataString);
-    $("#date").text(date)
     $("#temp").text(resultObj.current.temp);
     $('#wind').text(resultObj.current.wind_speed);
     $('#humidity').text(resultObj.current.humidity);
-
+    var uviShow = $("#uv-show").text(resultObj.current.uvi);
    
     if(uviShow <= 2){
         uviShow.attr("class", "text-bg-success");
