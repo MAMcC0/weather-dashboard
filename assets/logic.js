@@ -1,9 +1,21 @@
+let userInput;
+
+
 function grabInput (){
-    
-   
+
     var userInput = $("#weather-search").val().trim();
-    var userDisplay = $(userInput).addClass('captialize');//fix
-    $("#city-name").text(userDisplay);
+   var userInputStore = JSON.parse(localStorage.getItem("userSearch")) || [];
+   
+   var newInput = [
+    ...userInputStore,
+     userInput,
+   ];
+
+   localStorage.setItem("userSearch", JSON.stringify(newInput));
+   
+    
+    
+    $("#city-name").text(userInput);
 
     console.log(userInput);
 
@@ -35,26 +47,25 @@ function weatherFetch(resultObj) {
 }
  function weatherRender(resultObj){
 //moment.js time function of dt objects
-    var uviShow =$("#uv-show");
-   var date = moment.utc(resultObj.current.dt).local().format();
+                   
+    var uviShow =$("#uv-show").text(resultObj.current.uvi);
+    var date = document.getElementById("date");
+    var dataString = moment(resultObj.current.dt).format('L');
    
-   console.log(date);
+   console.log(dataString);
     $("#date").text(date)
-
     $("#temp").text(resultObj.current.temp);
-
     $('#wind').text(resultObj.current.wind_speed);
-
     $('#humidity').text(resultObj.current.humidity);
 
-    var uvi = resultObj.current.uvi; 
-    if(uvi <= 2){
+   
+    if(uviShow <= 2){
         uviShow.attr("class", "text-bg-success");
-    } else if (uvi > 2 && uvi <= 5){
+    } else if (uviShow > 2 && uviShow <= 5){
         uviShow.attr("class", "text-bg-info");
-    } else if( uvi > 5 && uvi <= 7 ){
+    } else if( uviShow > 5 && uviShow <= 7 ){
         uviShow.attr("class", "text-bg-primary");
-    } else if (uvi > 7 && uvi <= 10 ){
+    } else if (uviShow > 7 && uviShow <= 10 ){
         uviShow.attr("class", "text-bg-warning");
     } else {
         uviShow.attr("class", "text-bg-danger");
