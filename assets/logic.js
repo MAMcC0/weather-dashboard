@@ -1,6 +1,6 @@
 let userInput;
 var index = 0;
-
+///function to grab input from search bar and geocode it to pass into weather api
 function grabInput (){
 
     var userInput = $("#weather-search").val().trim();
@@ -25,6 +25,7 @@ fetch(url)
     });
 
 };
+//function to grab data from weather api
 function weatherFetch(resultObj) {
     
     var lat = resultObj[0].lat;
@@ -42,7 +43,7 @@ function weatherFetch(resultObj) {
 
 }
  function weatherRender(resultObj){
-//moment.js time function of dt objects
+//rende weather for hero section
                    
     
     var weatherIcon 
@@ -56,7 +57,7 @@ function weatherFetch(resultObj) {
     var uviShow = $("#uv-show").text(resultObj.current.uvi);
 
 
-   
+   ////uvi gauge
     if(uviShow <= 2){
         uviShow.attr("class", "text-bg-success");
     } else if (uviShow > 2 && uviShow <= 5){
@@ -70,15 +71,17 @@ function weatherFetch(resultObj) {
     }
     renderCard(resultObj);
 }
-
+///render card function
     function renderCard(resultObj){
     for (let i=0; i < 5; i++)
-    {
-            var dateCard = $("<h3>").html(moment.unix(resultObj.daily[i].dt).format('MMM D'))
-            var tempCard = $("<p>Temp:").text(resultObj.daily[i].temp);
+    {       
+            var dateCard = $("<h3>").text(moment.unix(resultObj.daily[i].dt).format('MMM D'))
+            var tempCard = $("<p>Temp:").text(resultObj.daily[i].temp.day);
             var windCard = $("<p>Wind:").text(resultObj.daily[i].wind_speed);
             var humidityCard = $("<p>Humidity:").text(resultObj.daily[i].humidity);
+            
             $("#card-hold").append(dateCard, tempCard, windCard, humidityCard)
+            
             
         
      
