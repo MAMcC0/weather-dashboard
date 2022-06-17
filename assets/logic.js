@@ -35,9 +35,9 @@ function weatherFetch(resultObj) {
 
     fetch(weatherFetchUrl)
         .then(response => response.json())
-        .then(data => 
-             {
-               weatherRender(data)}
+        .then(data => console.log(data);
+              {
+                weatherRender(data)}
               );
 
 }
@@ -45,7 +45,7 @@ function weatherFetch(resultObj) {
 //moment.js time function of dt objects
                    
     
-    
+    var weatherIcon 
     var grabTime = moment.unix(resultObj.current.dt).format('MMM D');
     var dataString = $("#date").html(grabTime);
     
@@ -54,6 +54,8 @@ function weatherFetch(resultObj) {
     $('#wind').text(resultObj.current.wind_speed);
     $('#humidity').text(resultObj.current.humidity);
     var uviShow = $("#uv-show").text(resultObj.current.uvi);
+
+
    
     if(uviShow <= 2){
         uviShow.attr("class", "text-bg-success");
@@ -67,6 +69,7 @@ function weatherFetch(resultObj) {
         uviShow.attr("class", "text-bg-danger");
     }}
 
+    
 
 
 $("#search-btn").click(grabInput);
