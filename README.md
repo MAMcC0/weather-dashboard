@@ -10,7 +10,7 @@ searched so you may tap on a name and be shown that city's weather once more.
 HTML, CSS, JQuery
 
 ## Links
-Repo: https://github.com/MAMcC0/technical-questions-quiz
+Repo:https://github.com/MAMcC0/weather-dashboard
 Live Site: https://mamcc0.github.io/weather-dashboard/
 
 ## Image of Application
