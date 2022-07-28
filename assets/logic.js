@@ -38,6 +38,7 @@ function weatherFetch(resultObj) {
         .then(response => response.json())
         .then(data => 
               {
+                console.log(data);
                 weatherRender(data)}
               );
 
@@ -78,12 +79,17 @@ function weatherFetch(resultObj) {
             var dayCard = $("<div>").attr({
                                              "class": "card p-2",
                                              "style" : "width: 14rem;"}).appendTo("#card-hold");
+            var weatherIcon = $('<img>').attr({
+                                            "src":`https://openweathermap.org/img/wn/${resultObj.daily[i].weather[0].icon}@2x.png`,
+                                            "alt": "icon",
+                                            "class": "card-img-top",
+            })
             var dateCard = $("<h3>").attr("class", "text-center" ).text(moment.unix(resultObj.daily[i].dt).format('MMM D'))
             var tempCard = $("<p>").text("Temp: " + resultObj.daily[i].temp.day + ' F');
             var windCard = $("<p>").text( "Wind: "+ resultObj.daily[i].wind_speed + ' mph');
             var humidityCard = $("<p>").text("Humidity: " + resultObj.daily[i].humidity + " %");
             
-            dayCard.append(dateCard, tempCard, windCard, humidityCard)
+            dayCard.append(dateCard, weatherIcon, tempCard, windCard, humidityCard)
             
             
         
