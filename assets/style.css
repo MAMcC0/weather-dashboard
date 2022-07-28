@@ -16,3 +16,8 @@ body{
 #five-title{
     padding-bottom: 2%;
 }
+
+#current-day{
+    background-color: rgb(137, 199, 250, 0.4);
+    
+}
