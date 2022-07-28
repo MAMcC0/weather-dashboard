@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/style.css">
     <title>Weather Dashboard</title>
 </head>
 
@@ -26,17 +27,17 @@
             
                 <section class="container border">
                     <h3 id="city-name"><span id="date"></span></h3>
-                    <p class="py-2">Temp: <span id="temp"></span></p>
+                    <p class="py-2"> <span id="temp">Temp:</span></p>
                     <p class="py-2">Wind: <span id="wind"></span></p>
                     <p class="py-2">Humidity: <span id="humidity"></span></p>
                     <p class="py-2" id="uv-index">UV Index:<span id="uv-show"></span></p>
                 </section>
             
            
-                <section class="pr-5 ">
-                    <h3>Five Day Forecast</h3>
-                    <div id="card-hold">
-                        
+                <section class="mt-3" id="five-day">
+                    <h3 class="text-center" id="five-title">Five Day Forecast</h3>
+                    <div id="card-hold" class="card-deck">
+                       
                     </div>
                 
                 </section>

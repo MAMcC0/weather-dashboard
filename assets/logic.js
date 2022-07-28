@@ -13,10 +13,10 @@ function grabInput (){
 
    localStorage.setItem("userSearch", JSON.stringify(newInput));
    
-    $("#city-name").text(userInput);
+    $("#city-name").attr("class","text-capitalize").text(userInput);
 
 
-var url = `http://api.openweathermap.org/geo/1.0/direct?q=${userInput},3166&limit=1&appid=d9e6c47cd1a84b43c7eae83b3f67b82b`;
+var url = `https://api.openweathermap.org/geo/1.0/direct?q=${userInput},3166&limit=1&appid=d9e6c47cd1a84b43c7eae83b3f67b82b`;
 
 fetch(url)
     .then(response => response.json())
@@ -51,23 +51,23 @@ function weatherFetch(resultObj) {
     var dataString = $("#date").html(grabTime);
     
    
-    $("#temp").text(resultObj.current.temp);
-    $('#wind').text(resultObj.current.wind_speed);
-    $('#humidity').text(resultObj.current.humidity);
-    var uviShow = $("#uv-show").text(resultObj.current.uvi);
+    $("#temp").text(resultObj.current.temp + " F");
+    $('#wind').text(resultObj.current.wind_speed  + " mph");
+    $('#humidity').text(resultObj.current.humidity + "%");
+    var uviShow = $("#uv-show").text(" "+ resultObj.current.uvi + " ");
 
 
    ////uvi gauge
     if(uviShow <= 2){
-        uviShow.attr("class", "text-bg-success");
+        uviShow.attr("class", "bg-success text-white");
     } else if (uviShow > 2 && uviShow <= 5){
-        uviShow.attr("class", "text-bg-info");
+        uviShow.attr("class", "bg-info text-white");
     } else if( uviShow > 5 && uviShow <= 7 ){
-        uviShow.attr("class", "text-bg-primary");
+        uviShow.attr("class", "bg-primary text-white");
     } else if (uviShow > 7 && uviShow <= 10 ){
-        uviShow.attr("class", "text-bg-warning");
+        uviShow.attr("class", "bg-warning text-white");
     } else {
-        uviShow.attr("class", "text-bg-danger");
+        uviShow.attr("class", "bg-danger text-white");
     }
     renderCard(resultObj);
 }
@@ -75,12 +75,15 @@ function weatherFetch(resultObj) {
     function renderCard(resultObj){
     for (let i=0; i < 5; i++)
     {       
-            var dateCard = $("<h3>").text(moment.unix(resultObj.daily[i].dt).format('MMM D'))
-            var tempCard = $("<p>Temp:").text(resultObj.daily[i].temp.day);
-            var windCard = $("<p>Wind:").text(resultObj.daily[i].wind_speed);
-            var humidityCard = $("<p>Humidity:").text(resultObj.daily[i].humidity);
+            var dayCard = $("<div>").attr({
+                                             "class": "card p-2",
+                                             "style" : "width: 14rem;"}).appendTo("#card-hold");
+            var dateCard = $("<h3>").attr("class", "text-center" ).text(moment.unix(resultObj.daily[i].dt).format('MMM D'))
+            var tempCard = $("<p>").text("Temp: " + resultObj.daily[i].temp.day + ' F');
+            var windCard = $("<p>").text( "Wind: "+ resultObj.daily[i].wind_speed + ' mph');
+            var humidityCard = $("<p>").text("Humidity: " + resultObj.daily[i].humidity + " %");
             
-            $("#card-hold").append(dateCard, tempCard, windCard, humidityCard)
+            dayCard.append(dateCard, tempCard, windCard, humidityCard)
             
             
         
