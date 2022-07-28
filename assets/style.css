@@ -1,3 +1,9 @@
+body{
+    background-image: url(./pexels-simon-berger-1424337.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+   
+}
 .capitalize {
     text-transform: capitalize;
 }
