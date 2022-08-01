@@ -14,4 +14,4 @@ Repo:https://github.com/MAMcC0/weather-dashboard
 Live Site: https://mamcc0.github.io/weather-dashboard/
 
 ## Image of Application
-![application](./assets/Screenshot%20(23).png)
+![application](./assets/Screenshot%20(74).png)
