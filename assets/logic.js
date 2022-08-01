@@ -16,9 +16,9 @@ function grabInput (){
     $("#city-name").attr("class","text-capitalize").text(userInput);
 
 
-var url = `https://api.openweathermap.org/geo/1.0/direct?q=${userInput},3166&limit=1&appid=d9e6c47cd1a84b43c7eae83b3f67b82b`;
+    var url = `https://api.openweathermap.org/geo/1.0/direct?q=${userInput},3166&limit=1&appid=d9e6c47cd1a84b43c7eae83b3f67b82b`;
 
-fetch(url)
+    fetch(url)
     .then(response => response.json())
     .then(data => {
          weatherFetch(data)
@@ -98,7 +98,14 @@ function weatherFetch(resultObj) {
       
     } };  
     
+function recoverCity(event){
+    let target = event.target;
 
+    if(target.matches('li')) {
+        let city = target.textContent;
+
+    }
+}
 
 $("#search-btn").click(grabInput);
-
+$('.city-list').click(recoverCity);
